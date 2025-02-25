@@ -9,7 +9,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 # Configurar layout do Streamlit
 st.set_page_config(page_title="Dashboard de Tarefas", layout="wide")
 
-st.title("📊 Dashboard de Tarefas - Google Sheets")
+st.title("📊 Dashboard de Tarefas - Planejamento")
 
 # 🔹 Ler as credenciais da variável de ambiente
 json_credenciais = st.secrets["GOOGLE_SHEETS_CREDENTIALS"]
@@ -38,7 +38,7 @@ col1, col2, col3, col4 = st.columns(4)
 col1.metric("📌 Total de Tarefas", len(df))
 col2.metric("✅ Concluídas", df[df["Status"] == "Concluído"].shape[0])
 col3.metric("🕒 Em andamento", df[df["Status"] == "Em andamento"].shape[0])
-col4.metric("📋 A Fazer", df[df["Status"] == "A fazer"].shape[0])
+col4.metric("📋 A Fazer", df[df["Status"] == "A realizar"].shape[0])
 
 # 🔹 Gráfico de Gantt (Linha do Tempo das Tarefas)
 fig_gantt = px.timeline(df, x_start="Data de Início", x_end="Data de Término",
